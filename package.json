@@ -1,0 +1,16 @@
+{
+  "name": "ca2_feh_api_react",
+  "version": "1.0.0",
+  "description": "front end for this api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "theodore cadet",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.1",
+    "mongoose": "^6.1.1"
+  }
+}
