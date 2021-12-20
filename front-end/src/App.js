@@ -1,12 +1,12 @@
 import './App.css';
 import Navigation from "./Navigation";
 // import {  } from 'react-router';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import FehAdd from "./components/FehAdd";
 import FehEdit from "./components/FehEdit";
 import FehSingle from "./components/FehSingle";
 import FeHeroes from "./components/FeHeroes";
-import FehView from "./components/FehView";
+import FehDelete from './components/FehDelete';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path="/FehEdit/:id" element={<FehEdit />} />
         <Route path="/FehSingle/:id" element={<FehSingle />} />
         <Route path="/FeHeroes" element={<FeHeroes />} />
-        <Route path="/FehView" element={<FehView />} />
+        <Route path="/FehDelete/:id" element={<FehDelete />} />
       </Routes>
     </div>
   );
@@ -27,14 +27,14 @@ function App() {
 
 export default App;
 
-function Home() {
-  return (
-    <div>
-      <h5>This is the home page</h5>
-      <nav>
-        <Link to="/navigation">go nav</Link>
-      </nav>
-    </div>
-  )
+// function Home() {
+//   return (
+//     <div>
+//       <h5>This is the home page</h5>
+//       <nav>
+//         <Link to="/navigation">go nav</Link>
+//       </nav>
+//     </div>
+//   )
   
-}
+// }

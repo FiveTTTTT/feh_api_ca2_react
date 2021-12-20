@@ -5,10 +5,6 @@ import React from 'react';
 import axios from "axios";
 import qs from 'qs';
 
-import { useParams } from "react-router-dom";
-
-
-
 // const FehEdit = () => {
 //     const {id} = useParams();
 
@@ -169,25 +165,25 @@ class FehEdit extends React.Component {
 
     editTheHero(id) {
     
-        axios({
-            method: "PUT",
-            url: `/edit-heroes/${id}`,
-            headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
-            data: qs.stringify({
-                     'name': "ash",
-                     title: "Askr's vassal",
-                     ultAtk: 0.3,
-                     stats: JSON.stringify({
-                         hp: 42,
-                         atk: 58,
-                         spd: 27,
-                         def: 42,
-                         res: 34,
-                     }),
-                     isLegend: false,
-                     isMythic: true 
-            })
-        })
+        // axios({
+        //     method: "PUT",
+        //     url: `/edit-heroes/${id}`,
+        //     headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
+        //     data: qs.stringify({
+        //              'name': "ash",
+        //              title: "Askr's vassal",
+        //              ultAtk: 0.3,
+        //              stats: JSON.stringify({
+        //                  hp: 42,
+        //                  atk: 58,
+        //                  spd: 27,
+        //                  def: 42,
+        //                  res: 34,
+        //              }),
+        //              isLegend: false,
+        //              isMythic: true 
+        //     })
+        // })
 }
     
     render() {
@@ -204,8 +200,8 @@ class FehEdit extends React.Component {
 
                         </div>
                         <div>
-                            <label>{this.state.ultAtk}</label>,
-                            <input type="range" id="ultAtk" name="ultAtk" min="0" max="1" step="0.1" onChange={this.handleChange}></input>
+                            <label>{Math.ceil(1/this.state.ultAtk)}</label>
+                            <input type="range" id="ultAtk" name="ultAtk" min="0.2" max="0.5" step="0.1" onChange={this.handleChange}></input>
                         </div>
                         <div>
                             <ul>

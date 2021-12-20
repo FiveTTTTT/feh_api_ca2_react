@@ -1,10 +1,14 @@
-import axios from "axios";
+// import axios from "axios";
 import React from 'react';
 
-import { Route, Routes, Link } from 'react-router-dom';
+// import 
+
+// import { Route, Routes, Link } from 'react-router-dom';
 
 
-import { useParams } from "react-router-dom";
+
+
+// import { useParams } from "react-router-dom";
 
 // const FehSingle = () => {
 //     const {id} = useParams();
@@ -48,7 +52,6 @@ class FehSingle extends React.Component{
     }
 
     componentDidMount() {
-        // axios.get( `/show-heroes/${this.id[2]}`)
         fetch( `/show-heroes/${this.id[2]}`)
             .then(res => res.json())
             .then(
@@ -77,10 +80,11 @@ class FehSingle extends React.Component{
             return(
                 <div>
                     {
-                        console.log(this.state),
                         <div>
                             <h2>{this.state.theHero.name}</h2>
                             <h3>{this.state.theHero.title}</h3>
+                            <p>{this.state.theHero.ultAtk}</p>
+                            {/* <img ref={}></img> */}
                             <ul>
                                 <li>hp : {this.state.theHero.stats.hp}</li>
                                 <li>atk : {this.state.theHero.stats.atk}</li>
@@ -88,8 +92,17 @@ class FehSingle extends React.Component{
                                 <li>def : {this.state.theHero.stats.def}</li>
                                 <li>res : {this.state.theHero.stats.res}</li>
                             </ul>
-                            <div>{this.state.theHero.isLegend}</div>
-                            <div>{this.state.theHero.isMythic}</div>
+                            <div>
+                                <label>isLegend</label>
+                                <input type="checkbox" name="isLegend" defaultChecked={this.state.theHero.isLegend} id="isLegend" placeholder='isLegend'></input>
+                                                        
+                            </div>
+                            <div>
+                                <label>isMythic</label>
+                                <input type="checkbox" name="isMythic" defaultChecked={this.state.theHero.isMythic} id="isMythic" placeholder='isMythic'></input>
+                        
+                            </div>
+                            
 
 
                         </div>

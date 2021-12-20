@@ -95,13 +95,14 @@ app.get('/show-heroes-named/:name', (req, res) => {
 
 
 app.post('/post-heroes', (req, res) => {
-    console.log("mdr");
+    // console.log("mdr");
     let name = req.body.name;
-    console.log(name);
+    // console.log(name);
     let title = req.body.title;
-    console.log(title);
+    // console.log(title);
     let ultAtk = parseFloat(req.body.ultAtk);
-    console.log(ultAtk);
+    // console.log(ultAtk);
+    
     console.log(req.body.stats);
 
     // On postman it should be written like this :
