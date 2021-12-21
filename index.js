@@ -102,7 +102,7 @@ app.post('/post-heroes', (req, res) => {
     // console.log(title);
     let ultAtk = parseFloat(req.body.ultAtk);
     // console.log(ultAtk);
-    
+
     console.log(req.body.stats);
 
     // On postman it should be written like this :
@@ -134,6 +134,7 @@ app.post('/post-heroes', (req, res) => {
 })
 
 app.delete('/delete-heroes/:id', (req, res) => {
+    console.log("let's delete");
     FehHeroes.findByIdAndDelete(req.params.id, err => {
         if (err) {
             res.send("Hero was not deleted");

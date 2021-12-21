@@ -31,7 +31,8 @@ import FeHeroes from './FeHeroes';
 class FehDelete extends React.Component {
     constructor(props) {
         super(props);
-        this.id = window.location.href.split('=')[2]
+        this.id = window.location.href.split('/')[4]
+        console.log(this.id);
         this.state = {
             
         }
