@@ -58,23 +58,57 @@
 
 }
 
-#heroes-list ul li a div {
+#heroes-list ul li a div.hero-icon {
   width: 75px;
   height: 75px;
   padding: 2%;
-  background-color: red;
+  /* background-color: red; */
   color: antiquewhite;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+#heroes-list ul li a div.hero-icon div {
+  width: 110%;
+  height: 110%;
+  position: absolute;
+  background: no-repeat url("../src/assets/img/5-template.png");
+  background-size: contain;
+  background-position: bottom;
+
+}
+
+#heroes-list ul li a div.hero-icon img {
+  width: 100%;
+  height: 100%;
+
 }
 
 /*  */
 
 #hero-info {
+  overflow: hidden;
   position: relative;
+  width: 100%;
+  height: 100vh;
+  background: no-repeat url("../src/assets/img/BG_DetailedStatus.png");
+  background-position: center;
+  background-size: cover;
 }
-#hero-info, #hero-info *{
+
+#hero-info .heroImg {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  top: 7vh;
+
+  /* height: 100%; */
+}
+
+#hero-info,
+#hero-info * {
   font-family: "System";
 
 }
@@ -82,7 +116,7 @@
 #hero-info .nav-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 3vh;
+  padding-top: 3vh;
 }
 
 #hero-info .nav-buttons div {
@@ -107,7 +141,8 @@
 #hero-info section {
   position: fixed;
   bottom: 0;
-  height: 60vh;
+  z-index: 1;
+  height: 50vh;
   width: 100%;
 }
 

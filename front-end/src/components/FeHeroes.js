@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 class FeHeroes extends React.Component {
     constructor(props) {
         super(props);
+        // this.heroesIcons = require(`../assets/img/heroes-icons/6195183d1e728450afc9d2ca.png`).default;
+        // console.log(this.heroesIcons);
         // let id = window.location.href.split('=')[1]
         this.state = {
             isLoaded: false,
@@ -45,13 +47,22 @@ class FeHeroes extends React.Component {
             )
     }
 
+    iconSrcs(id){
+        // console.log(title);
+        // let titleSplit = title.split(" ");
+        let properId = id + ".png";
+        // titleSplit.forEach(element => {
+        //     properTitle = properTitle + "-" + element; 
+            
+        // });
+
+        let heroIcon = require(`../assets/img/heroes-icons/${properId}`).default;
+        return heroIcon;
+
+    }
+
 
     render() {
-        
-        // function showOneHero(id) {
-            
-        
-        // }
         if (!this.state.isLoaded) {
             
             return ( 
@@ -69,7 +80,13 @@ class FeHeroes extends React.Component {
                             this.state.feHeroes.map(item =>(
                                 <li key={item._id}>
                                     {/* <Link to="/FehSingle/+{{ item._id }}">{item.title}</Link> */}
-                                    <Link to={`/FehSingle/${item._id}`}><div>{item.name}</div></Link>  
+                                    <Link to={`/FehSingle/${item._id}`}>
+                                        <div className='hero-icon'>
+                                            <div></div>
+                                            <img src={this.iconSrcs(item._id)}></img>
+                                            {/* {item.name} */}
+                                        </div>
+                                    </Link>  
                                     {/* <FehDelete id={`${item._id}`}>x</FehDelete> */}
                                     {/* <Link to={`/FehDelete/${item._id}`}>delete</Link> | 
                                     <Link to={`/FehEdit/${item._id}`}>edit</Link> */}

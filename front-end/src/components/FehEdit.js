@@ -41,6 +41,8 @@ import { Link } from 'react-router-dom';
 class FehEdit extends React.Component {
     constructor(props) {
         super(props);
+        this.back = require("../assets/img/back-button.png").default;
+        this.edit = require("../assets/img/edit-button.png").default;
         this.id = window.location.pathname.split('/')[2];
         // console.log(this.id[2]);
         this.isModified = false;

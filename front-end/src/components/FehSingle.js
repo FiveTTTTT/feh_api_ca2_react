@@ -50,7 +50,8 @@ class FehSingle extends React.Component{
         console.log(this.id[2]);
         this.state = {
             isLoaded: false,
-            theHero: []
+            theHero: [],
+            heroId: 0
         };
     }
 
@@ -62,9 +63,10 @@ class FehSingle extends React.Component{
                     console.log(result);
                     this.setState({            
                         isLoaded: true,
-                        theHero: result
+                        theHero: result,
+                        heroId: result._id
                     });
-                    console.log(this.state.theHero);
+                    console.log(this.state.heroId);
 
                 },
                 )
@@ -156,6 +158,8 @@ class FehSingle extends React.Component{
 
                         </section>
                     }
+                    <img className='heroImg' src={ require(`../assets/img/heroes/${this.state.heroId + ".png"}`).default}></img>
+
                 </div>
             )
         }
