@@ -42,12 +42,7 @@ class FeHeroes extends React.Component {
                         feHeroes: result,
                     });
                 },
-                // Remarque : il est important de traiter les erreurs ici
-                // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
-                // des exceptions provenant de réels bugs du composant.
-                (error) => {
-                }
-        )
+            )
     }
 
 
@@ -68,16 +63,16 @@ class FeHeroes extends React.Component {
         } else {
 
             return(
-                <div>
+                <div id='heroes-list'>
                     <ul>
                         {
                             this.state.feHeroes.map(item =>(
                                 <li key={item._id}>
                                     {/* <Link to="/FehSingle/+{{ item._id }}">{item.title}</Link> */}
-                                    <Link to={`/FehSingle/${item._id}`}>{item.title}</Link> | 
+                                    <Link to={`/FehSingle/${item._id}`}><div>{item.name}</div></Link>  
                                     {/* <FehDelete id={`${item._id}`}>x</FehDelete> */}
-                                    <Link to={`/FehDelete/${item._id}`}>delete</Link> | 
-                                    <Link to={`/FehEdit/${item._id}`}>edit</Link>
+                                    {/* <Link to={`/FehDelete/${item._id}`}>delete</Link> | 
+                                    <Link to={`/FehEdit/${item._id}`}>edit</Link> */}
                                 </li>
                             ))
                             

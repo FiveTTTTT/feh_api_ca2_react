@@ -1,5 +1,6 @@
 // import axios from "axios";
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // import 
 
@@ -42,7 +43,9 @@ import React from 'react';
 class FehSingle extends React.Component{
     constructor(props) {
         super(props);
-        // let id = window.location.href.split('=')[1]
+        this.back = require("../assets/img/back-button.png").default;
+        this.edit = require("../assets/img/edit-button.png").default;
+        console.log(this.back);
         this.id = window.location.pathname.split('/');
         console.log(this.id[2]);
         this.state = {
@@ -68,8 +71,7 @@ class FehSingle extends React.Component{
     }
     
     render() {
-        if (!this.state.isLoaded) {
-                
+        if (!this.state.isLoaded) {                
                 return ( 
                     <div>
                         Loading...
@@ -78,21 +80,68 @@ class FehSingle extends React.Component{
                 )
         } else {
             return(
-                <div>
-                    {
+                <div id='hero-info'>
+                    <div className='nav-buttons'>
                         <div>
-                            <h2>{this.state.theHero.name}</h2>
-                            <h3>{this.state.theHero.title}</h3>
-                            <p>{this.state.theHero.ultAtk}</p>
+                            <Link to="/"><img src={this.back}></img></Link>
+                            <Link to={`/FehEdit/${this.id[2]}`}><img src={this.edit}></img></Link>
+                        </div>
+                        <button>Delete</button>
+                    </div>
+                    {
+                        <section>
+                            <article className='hero-head'>
+                                <div>
+                                    <h2>{this.state.theHero.name}</h2>
+                                    <h3>{this.state.theHero.title}</h3>
+                                </div>
+                                <div>
+                                    <div>
+                                        <label>isLegend</label>
+                                        <input type="checkbox" name="isLegend" defaultChecked={this.state.theHero.isLegend} id="isLegend" placeholder='isLegend'></input>
+                                                                
+                                    </div>
+                                    <div>
+                                        <label>isMythic</label>
+                                        <input type="checkbox" name="isMythic" defaultChecked={this.state.theHero.isMythic} id="isMythic" placeholder='isMythic'></input>
+                                
+                                    </div>
+                                </div>
+                            </article>
+                            
                             {/* <img ref={}></img> */}
-                            <ul>
-                                <li>hp : {this.state.theHero.stats.hp}</li>
-                                <li>atk : {this.state.theHero.stats.atk}</li>
-                                <li>spd : {this.state.theHero.stats.spd}</li>
-                                <li>def : {this.state.theHero.stats.def}</li>
-                                <li>res : {this.state.theHero.stats.res}</li>
-                            </ul>
-                            <div>
+                            <article className='hero-stats'>
+                                <div className='list-stat'>
+                                    <ul>
+                                        <li>
+                                            <div>hp</div> 
+                                            <div>{this.state.theHero.stats.hp}</div> 
+                                        </li>
+                                        <li>
+                                            <div>atk</div> 
+                                            <div>{this.state.theHero.stats.atk}</div> 
+                                        </li>
+                                        <li>
+                                            <div>spd</div> 
+                                            <div>{this.state.theHero.stats.spd}</div> 
+                                        </li>
+                                        <li>
+                                            <div>def</div> 
+                                            <div>{this.state.theHero.stats.def}</div> 
+                                        </li>
+                                        <li>
+                                            <div>res</div> 
+                                            <div>{this.state.theHero.stats.res}</div> 
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div className='the-ultatk'>
+                                    <p>{Math.ceil(1/this.state.theHero.ultAtk)}</p>
+                                </div>
+
+                            </article>
+                            {/* <div>
                                 <label>isLegend</label>
                                 <input type="checkbox" name="isLegend" defaultChecked={this.state.theHero.isLegend} id="isLegend" placeholder='isLegend'></input>
                                                         
@@ -101,11 +150,11 @@ class FehSingle extends React.Component{
                                 <label>isMythic</label>
                                 <input type="checkbox" name="isMythic" defaultChecked={this.state.theHero.isMythic} id="isMythic" placeholder='isMythic'></input>
                         
-                            </div>
+                            </div> */}
                             
 
 
-                        </div>
+                        </section>
                     }
                 </div>
             )

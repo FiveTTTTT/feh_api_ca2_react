@@ -11,22 +11,25 @@ import FeHeroes from './FeHeroes';
 
 // const FehDelete = (props) => {
 //     const {id} = useParams();
+//     function deleteHero() {
 //         axios({
 //                 method:"DELETE",
 //                 url: `/delete-heroes/${id}`
 //             })
+//     }
 
 
         
     
 
 //     return (
-//         <div>
-//             <redirect
-//             <FeHeroes></FeHeroes>
+//         <div id='delete-alert'>
+
 //         </div>
 //     );
 // }
+
+
 
 class FehDelete extends React.Component {
     constructor(props) {

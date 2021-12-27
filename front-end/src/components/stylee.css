@@ -1,0 +1,7 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(../fonts/System.ttf);
+  }
+  *{
+      font-family: myFirstFont;
+  }

@@ -32,9 +32,148 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
+#heroes-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
+}
+
+#heroes-list ul li {
+  margin: 10px;
+  color: antiquewhite;
+}
+
+#heroes-list ul li a {
+  text-decoration: none;
+
+}
+
+#heroes-list ul li a div {
+  width: 75px;
+  height: 75px;
+  padding: 2%;
+  background-color: red;
+  color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  */
+
+#hero-info {
+  position: relative;
+}
+#hero-info, #hero-info *{
+  font-family: "System";
+
+}
+
+#hero-info .nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3vh;
+}
+
+#hero-info .nav-buttons div {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+#hero-info .nav-buttons button {
+  width: 30%;
+  height: 6vh;
+  border: none;
+  background: no-repeat url("../src/assets/img/delete-button.png");
+  background-size: contain;
+  color: #fff;
+}
+
+#hero-info .nav-buttons img {
+  width: 30%;
+}
+
+#hero-info section {
+  position: fixed;
+  bottom: 0;
+  height: 60vh;
+  width: 100%;
+}
+
+#hero-info section .hero-head {
+  width: 100%;
+  height: 15vh;
+  background-color: rgb(255, 174, 0);
+  display: flex;
+  justify-content: space-between;
+}
+
+#hero-info section .hero-stats {
+  width: 100%;
+  background-color: blue;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 27vh;
+
+}
+
+#hero-info section .hero-stats .list-stat {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+
+}
+
+#hero-info section .hero-stats .the-ultatk {
+  width: 20%;
+
+
+}
+
+#hero-info section .hero-stats ul {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+#hero-info section .hero-stats ul li {
+  background-color: rgb(93, 96, 255);
+  border-radius: 30px;
+  width: 100%;
+  padding: 2% 4%;
+  margin-right: 0;
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+#hero-info section .hero-stats ul li input {
+  width: 60%;
+}
+
+#hero-info section .hero-stats .the-ultatk input {
+  width: 100%;
+}
+
+#hero-info section .hero-stats .the-ultatk {
+  width: 30%;
+}
+
+/* #hero-info section .hero-stats ul li {
+  width: 80%;
+} */
