@@ -28,7 +28,7 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -36,6 +36,54 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+#heroes-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background: no-repeat url("../src/assets/img/heroes-bg.jpg");
+  background-size: cover;
+  background-position: center;
+
+
+}
+
+* {
+  color: #fff;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+#heroes-list h1 {
+  text-align: center;
+  width: 80%;
+
+  background-color: hsl(41, 34%, 78%);
+  border-radius: 20% 10px;
+  
+  border: 1px solid black;
+  border-top-width: 5px;
+  border-top-color: hsl(41, 34%, 98%);
+  border-bottom-width: 5px;
+
+
+
+}
+
+#heroes-list .theList {
+  border-radius: 9%;
+  box-shadow: inset 0px 0px 0px 2px #678d96;
+  box-sizing: border-box;
+  background-color: hsla(201, 66%, 16%, 0.7);
+  max-height: 80vh;
+
+
 }
 
 #heroes-list ul {
@@ -45,6 +93,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
 
 }
 
@@ -58,9 +107,9 @@
 
 }
 
-#heroes-list ul li a div.hero-icon {
-  width: 75px;
-  height: 75px;
+#heroes-list ul li .hero-icon {
+  width: 100px;
+  height: 100px;
   padding: 2%;
   /* background-color: red; */
   color: antiquewhite;
@@ -69,8 +118,34 @@
   align-items: center;
   position: relative;
 }
+#heroes-list ul li .hero-icon.new-hero-button {
+  background-color: transparent;
+}
 
-#heroes-list ul li a div.hero-icon div {
+#heroes-list ul li .hero-icon div {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+#heroes-list ul li .hero-icon.new-hero-button a {
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: no-repeat url("../src/assets/img/new-template.png");
+  background-size: contain;
+  background-position: bottom;
+
+}
+
+#heroes-list ul li a .hero-icon div {
   width: 110%;
   height: 110%;
   position: absolute;
@@ -80,9 +155,10 @@
 
 }
 
-#heroes-list ul li a div.hero-icon img {
+#heroes-list ul li a .hero-icon img {
   width: 100%;
   height: 100%;
+  background: url("../src/assets/img/bg-hero.png");
 
 }
 
@@ -108,7 +184,9 @@
 }
 
 #hero-info,
-#hero-info * {
+#hero-info *,
+#hero-list,
+#hero-list * {
   font-family: "System";
   color: #fff;
   text-shadow:

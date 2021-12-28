@@ -76,35 +76,43 @@ class FeHeroes extends React.Component {
 
             return(
                 <div id='heroes-list'>
-                    <ul>
-                        {
-                            this.state.feHeroes.map(item =>(
-                                this.nbOfHero++,
-                                  
-                                <li key={item._id}>
-                                    {/* <Link to="/FehSingle/+{{ item._id }}">{item.title}</Link> */}
-                                    <Link to={`/FehSingle/${item._id}`}>
-                                        <div className='hero-icon'>
-                                            <div></div>
-                                            <img src={this.nbOfHero <= 8 ? this.iconSrcs(item._id) : this.iconSrcs("unknown")}></img>
-                                            {/* {item.name} */}
-                                        </div>
-                                    </Link>  
-                                    {/* <FehDelete id={`${item._id}`}>x</FehDelete> */}
-                                    {/* <Link to={`/FehDelete/${item._id}`}>delete</Link> | 
-                                    <Link to={`/FehEdit/${item._id}`}>edit</Link> */}
-                                </li>
-                            ))
-                            
-                            
+                    <h1>Select one hero</h1>
+                    <div className='theList'>
+                        <ul>
+                            <li key={0}>
+                                <button className='hero-icon new-hero-button'>
+                                    <Link to={`/FehAdd`}><div>Create a new Hero</div></Link>
+                                    
+                                    {/* {item.name} */}
+                                </button>
+                            </li>
+                            {
+                                this.state.feHeroes.map(item =>(
+                                    this.nbOfHero++,
+                                    
+                                    <li key={item._id+1}>
+                                        
+                                        {/* <Link to="/FehSingle/+{{ item._id }}">{item.title}</Link> */}
+                                        <Link to={`/FehSingle/${item._id}`}>
+                                            <div className='hero-icon'>
+                                                <div></div>
+                                                <img src={this.nbOfHero <= 8 ? this.iconSrcs(item._id) : this.iconSrcs("unknown")}></img>
+                                                {/* {item.name} */}
+                                            </div>
+                                        </Link>  
+                                        {/* <FehDelete id={`${item._id}`}>x</FehDelete> */}
+                                        {/* <Link to={`/FehDelete/${item._id}`}>delete</Link> | 
+                                        <Link to={`/FehEdit/${item._id}`}>edit</Link> */}
+                                    </li>
+                                ))
+                                
+                                
 
 
-                            
-                        }
-                    </ul>
-                    <button>
-                        <Link to={`/FehAdd`}>Create a new Hero</Link>
-                    </button>
+                                
+                            }
+                        </ul>
+                    </div>
                 </div>
             )
         }
