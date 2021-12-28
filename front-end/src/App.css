@@ -102,7 +102,7 @@
   position: absolute;
   z-index: 0;
   width: 100%;
-  top: 7vh;
+  top: 0;
 
   /* height: 100%; */
 }
@@ -110,6 +110,12 @@
 #hero-info,
 #hero-info * {
   font-family: "System";
+  color: #fff;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 
 }
 
@@ -117,6 +123,8 @@
   display: flex;
   justify-content: space-between;
   padding-top: 3vh;
+  position: inherit;
+  z-index: 1;
 }
 
 #hero-info .nav-buttons div {
@@ -135,28 +143,84 @@
 }
 
 #hero-info .nav-buttons img {
-  width: 30%;
+  width: 40%;
 }
 
 #hero-info section {
   position: fixed;
   bottom: 0;
   z-index: 1;
-  height: 50vh;
+  height: 60vh;
   width: 100%;
 }
 
 #hero-info section .hero-head {
   width: 100%;
-  height: 15vh;
-  background-color: rgb(255, 174, 0);
+  height: 22vh;
+  /* background-color: rgb(255, 174, 0); */
   display: flex;
   justify-content: space-between;
 }
 
+#hero-info section .hero-head .name-title {
+  width: 60%;
+  height: 100%;
+  background: no-repeat url("../src/assets/img/names-bg.png");
+  background-size: cover;
+  position: relative;
+}
+
+#hero-info section .hero-head .name-title h3 {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+
+}
+
+#hero-info section .hero-head .name-title h3:first-child {
+  top: 18%;
+
+}
+
+#hero-info section .hero-head .name-title h3:last-child {
+  top: 50%;
+
+}
+
+#hero-info section .hero-head .myth-legend-status {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+#hero-info.edit-hero input {
+  color: #000;
+  text-shadow: none;
+}
+
+#hero-info section .hero-head .myth-legend-status label input {
+  visibility: hidden;
+  display: flex;
+}
+
+#hero-info section .hero-head .myth-legend-status label img {
+  width: 100%;
+}
+
+#hero-info section .hero-head .myth-legend-status label {
+  width: 50%;
+}
+
+#hero-info section .hero-head .myth-legend-status img {
+  width: 50%;
+  /* height: 100%; */
+}
+
 #hero-info section .hero-stats {
   width: 100%;
-  background-color: blue;
+  background-color: hsla(201, 66%, 16%, 0.7);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -171,10 +235,8 @@
 
 }
 
-#hero-info section .hero-stats .the-ultatk {
-  width: 20%;
-
-
+#hero-info section .hero-stats .list-stat div:last-child {
+  color: #fef896;
 }
 
 #hero-info section .hero-stats ul {
@@ -186,13 +248,15 @@
 }
 
 #hero-info section .hero-stats ul li {
-  background-color: rgb(93, 96, 255);
+  background-color: #325d64;
   border-radius: 30px;
   width: 100%;
   padding: 2% 4%;
   margin-right: 0;
   margin-bottom: 1%;
   display: flex;
+  box-shadow: inset 0px 0px 0px 3px #678d96;
+  box-sizing: border-box;
   justify-content: space-around;
 
 }
@@ -206,9 +270,58 @@
 }
 
 #hero-info section .hero-stats .the-ultatk {
-  width: 30%;
+  width: 33%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
 }
 
-/* #hero-info section .hero-stats ul li {
-  width: 80%;
-} */
+#hero-info section .hero-stats .the-ultatk img {
+  width: 30%;
+  height: 30%;
+}
+
+#hero-info section .hero-stats .the-ultatk div {
+  display: flex;
+  align-items: center;
+}
+
+#hero-info section .hero-stats .the-ultatk p {
+  font-size: 14px;
+}
+
+.edit-button {
+  width: 100%;
+  display: flex;
+  margin-top: 2vh;
+  justify-content: center;
+}
+
+.edit-button-enable button {
+  width: 42%;
+  height: 6vh;
+  background: no-repeat url("./assets/img/confirm-button.png");
+  /* background-color: yellowgreen; */
+  background-size: contain;
+  border: none;
+}
+
+.edit-button-enable button:active {
+  width: 42%;
+  height: 6vh;
+  background: no-repeat url("./assets/img/confirm-button-click.png");
+  background-size: contain;
+  border: none;
+
+}
+
+.edit-button-disable button:disabled {
+  width: 42%;
+  height: 6vh;
+  opacity: 0.6;
+  background: no-repeat url("./assets/img/confirm-button-disable.png");
+  /* background-color: yellowgreen; */
+  background-size: contain;
+  border: none;
+}

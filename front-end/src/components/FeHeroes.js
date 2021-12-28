@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 class FeHeroes extends React.Component {
     constructor(props) {
         super(props);
+        this.nbOfHero = 0;
         // this.heroesIcons = require(`../assets/img/heroes-icons/6195183d1e728450afc9d2ca.png`).default;
         // console.log(this.heroesIcons);
         // let id = window.location.href.split('=')[1]
@@ -78,12 +79,14 @@ class FeHeroes extends React.Component {
                     <ul>
                         {
                             this.state.feHeroes.map(item =>(
+                                    this.nbOfHero++,
+                                  
                                 <li key={item._id}>
                                     {/* <Link to="/FehSingle/+{{ item._id }}">{item.title}</Link> */}
                                     <Link to={`/FehSingle/${item._id}`}>
                                         <div className='hero-icon'>
                                             <div></div>
-                                            <img src={this.iconSrcs(item._id)}></img>
+                                            <img src={this.nbOfHero <= 8 ? this.iconSrcs(item._id) : this.iconSrcs("unknown")}></img>
                                             {/* {item.name} */}
                                         </div>
                                     </Link>  
