@@ -196,13 +196,14 @@
 }
 
 #hero-info.edit-hero input {
-  color: #000;
+  color: #b1b1b1;
   text-shadow: none;
+  background-color: hsl(201, 66%, 16%);
 }
 
 #hero-info section .hero-head .myth-legend-status label input {
   visibility: hidden;
-  display: flex;
+  display: none;
 }
 
 #hero-info section .hero-head .myth-legend-status label img {
@@ -215,11 +216,13 @@
 
 #hero-info section .hero-head .myth-legend-status img {
   width: 50%;
-  /* height: 100%; */
 }
 
 #hero-info section .hero-stats {
   width: 100%;
+  border-radius: 9%;
+  box-shadow: inset 0px 0px 0px 2px #678d96;
+  box-sizing: border-box;
   background-color: hsla(201, 66%, 16%, 0.7);
   display: flex;
   justify-content: space-around;

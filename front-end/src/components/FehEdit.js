@@ -47,6 +47,8 @@ class FehEdit extends React.Component {
         this.mythF = require("../assets/img/myth-false.png").default;
         this.legendT = require("../assets/img/legend-true.png").default;
         this.mythT = require("../assets/img/myth-true.png").default;
+
+        this.heroesArray = [];
         this.id = window.location.pathname.split('/')[2];
         // console.log(this.id[2]);
         this.isModified = false;
@@ -63,6 +65,7 @@ class FehEdit extends React.Component {
             },
             isLegend: false,
             isMythic: false,
+            heroIsKnown: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -97,6 +100,18 @@ class FehEdit extends React.Component {
 
                 },
                 )
+            fetch("/show-heroes")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    result.forEach(element => {
+                        this.heroesArray.push(element._id)
+                    });
+                    this.isTheHeroKnown(this.heroesArray)
+                    console.log(this.heroesArray);
+                },
+            )
     }
 
     handleChange(event) {
@@ -213,7 +228,14 @@ class FehEdit extends React.Component {
 
     }
     
-
+    isTheHeroKnown(id) {
+        let i = 0;
+        id.forEach(element => {
+            if (this.state.heroId == element) {
+                this.setState.heroIsKnown = true;
+            }
+        });
+    }
     
     
     render() {
@@ -306,7 +328,7 @@ class FehEdit extends React.Component {
                         </section>
                     </form>
                 }
-                <img className='heroImg' src={ require(`../assets/img/heroes/${this.id + ".png"}`).default}></img>
+                <img className='heroImg' src={this.state.heroIsKnown ? require(`../assets/img/heroes/${this.state.heroId + ".png"}`).default : require(`../assets/img/heroes/unknown.png`).default }></img>
 
             </div>
         )

@@ -1,7 +1,10 @@
 // import axios from "axios";
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import FehEdit from './FehEdit';
+// import FehEdit from './FehEdit';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import FeHeroes from './FeHeroes';
 
 // import 
 
@@ -104,19 +107,22 @@ class FehSingle extends React.Component{
         console.log(error);
       }
 
-    deleteHeroes() {
-        
-        let deleteAlert = `<div id='delete-alert'>
-                            Are you sure?
-                            <button>yes</button>
-                         </div>`;
-                         console.log(deleteAlert);
-        // window.confirm(deleteAlert);
-
-        <Link to={`/FehDelelte/${this.id[2]}`}></Link>
-                         
-
-    }
+    deleteHeroes= () => {
+        confirmAlert({
+          title: 'Confirm to submit',
+          message: 'Are you sure to do this.',
+          buttons: [
+            {
+              label: 'Yes',
+              onClick: () => window.location.href = `/FehDelete/${this.id[2]}`
+            },
+            {
+              label: 'No',
+              onClick: () => alert('Click No')
+            }
+          ]
+        });
+      };
 
     isTheHeroKnown(id) {
         let i = 0;

@@ -36,9 +36,9 @@ class FehDelete extends React.Component {
         super(props);
         this.id = window.location.href.split('/')[4]
         console.log(this.id);
-        this.state = {
+        // this.state = {
             
-        }
+        // }
         
     }
 
@@ -46,13 +46,15 @@ class FehDelete extends React.Component {
         axios({
             method:"DELETE",
             url: `/delete-heroes/${this.id}`
-        })
+        }).then(
+            window.location.href = "/"
+        );
     }
 
     
     render() {
         return ( 
-            <FeHeroes></FeHeroes>
+            <div>hello</div>
         )
     }
 }

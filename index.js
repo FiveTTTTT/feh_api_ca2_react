@@ -142,7 +142,8 @@ app.delete('/delete-heroes/:id', (req, res) => {
         }
         res.send("Hero deleted");
         console.log(`Hero with id ${req.params.id} is now deleted`);
-    })
+    });
+    console.log("hello");
 })
 
 app.put('/edit-heroes/:id', (req, res) => {

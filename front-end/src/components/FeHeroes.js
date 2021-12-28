@@ -79,7 +79,7 @@ class FeHeroes extends React.Component {
                     <ul>
                         {
                             this.state.feHeroes.map(item =>(
-                                    this.nbOfHero++,
+                                this.nbOfHero++,
                                   
                                 <li key={item._id}>
                                     {/* <Link to="/FehSingle/+{{ item._id }}">{item.title}</Link> */}
