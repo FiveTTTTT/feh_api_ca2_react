@@ -11,9 +11,6 @@ class FeHeroes extends React.Component {
     constructor(props) {
         super(props);
         this.nbOfHero = 0;
-        // this.heroesIcons = require(`../assets/img/heroes-icons/6195183d1e728450afc9d2ca.png`).default;
-        // console.log(this.heroesIcons);
-        // let id = window.location.href.split('=')[1]
         this.state = {
             isLoaded: false,
             feHeroes: [],
@@ -22,24 +19,10 @@ class FeHeroes extends React.Component {
     
 
     componentDidMount(){
-        
-        // axios.get('/show-heroes')
-        //     .then(function (response) {
-        //         // console.log(response.data); 
-        //         this.setState({ 
-        //             feHeroes: response.data,
-        //             isLoaded: true
-        //          })
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     })
-
         fetch("/show-heroes")
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     this.setState({
                         isLoaded: true,
                         feHeroes: result,
@@ -49,13 +32,7 @@ class FeHeroes extends React.Component {
     }
 
     iconSrcs(id){
-        // console.log(title);
-        // let titleSplit = title.split(" ");
         let properId = id + ".png";
-        // titleSplit.forEach(element => {
-        //     properTitle = properTitle + "-" + element; 
-            
-        // });
 
         let heroIcon = require(`../assets/img/heroes-icons/${properId}`).default;
         return heroIcon;
@@ -76,7 +53,7 @@ class FeHeroes extends React.Component {
 
             return(
                 <div id='heroes-list'>
-                    <h1>Select one hero</h1>
+                    <h1>Heroes</h1>
                     <div className='theList'>
                         <ul>
                             <li key={0}>

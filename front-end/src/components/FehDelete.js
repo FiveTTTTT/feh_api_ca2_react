@@ -6,7 +6,7 @@ import axios from "axios";
 // import qs from 'qs';
 
 // import { useParams } from "react-router-dom";
-import FeHeroes from './FeHeroes';
+// import FeHeroes from './FeHeroes';
 
 
 // const FehDelete = (props) => {
@@ -34,12 +34,7 @@ import FeHeroes from './FeHeroes';
 class FehDelete extends React.Component {
     constructor(props) {
         super(props);
-        this.id = window.location.href.split('/')[4]
-        console.log(this.id);
-        // this.state = {
-            
-        // }
-        
+        this.id = window.location.href.split('/')[4];
     }
 
     componentDidMount () {

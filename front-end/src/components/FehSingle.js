@@ -1,47 +1,7 @@
-// import axios from "axios";
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-// import FehEdit from './FehEdit';
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import FeHeroes from './FeHeroes';
-
-// import 
-
-// import { Route, Routes, Link } from 'react-router-dom';
-
-
-
-
-// import { useParams } from "react-router-dom";
-
-// const FehSingle = () => {
-//     const {id} = useParams();
-//     var {state} = {
-//         theHero : {}
-//     }
-//     var theHero = {};
-//     axios({
-//             method:"get",
-//             url: `/show-heroes/${id}`
-//         }).then(
-//             (result) => {
-//                 console.log(result);
-//                 theHero = result;
-                
-//             }
-//         )
-//         // theHero = theHero;
-//         console.log(theHero);
-    
-        
-
-//     return (
-//         <div>
-//             <h2>le hero { state }</h2>
-//         </div>
-//     );
-// }
+import { Link } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
 class FehSingle extends React.Component{
@@ -55,19 +15,14 @@ class FehSingle extends React.Component{
         this.mythT = require("../assets/img/myth-true.png").default;
         this.heroesArray = [];
         
-        
-        console.log(this.back);
         this.id = window.location.pathname.split('/');
-        console.log(this.id[2]);
+        
         this.state = {
             isLoaded: false,
             theHero: [],            
             heroId: 0,
             heroIsKnown: false
         };
-        console.log(
-            // require(`../assets/img/heroes/${this.state.heroId + ".png"}`)
-        );
     }
 
     componentDidMount() {
@@ -75,35 +30,28 @@ class FehSingle extends React.Component{
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     this.setState({            
                         isLoaded: true,
                         theHero: result,
                         heroId: result._id
                     });
-                    console.log(this.state.heroId);
-
                 },
                 )
         fetch("/show-heroes")
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     result.forEach(element => {
                         this.heroesArray.push(element._id)
                     });
-                    this.isTheHeroKnown(this.heroesArray)
-                    console.log(this.heroesArray);
+                    this.isTheHeroKnown(this.heroesArray);
                 },
             )
                 
     }
 
-    componentDidCatch(error, info) {
-        // Display fallback UI
+    componentDidCatch(error) {
         this.setState({ isLoaded: true });
-        // You can also log the error to an error reporting service
         console.log(error);
       }
 
@@ -127,8 +75,11 @@ class FehSingle extends React.Component{
     isTheHeroKnown(id) {
         let i = 0;
         id.forEach(element => {
-            if (this.state.heroId == element) {
-                this.setState.heroIsKnown = true;
+            i++;
+            if (this.state.heroId === element && i<=8) {
+                this.setState({
+                    heroIsKnown: true
+                });
             }
         });
     }
@@ -146,8 +97,8 @@ class FehSingle extends React.Component{
                 <div id='hero-info'>
                     <div className='nav-buttons'>
                         <div>
-                            <Link to="/"><img src={this.back}></img></Link>
-                            <Link to={`/FehEdit/${this.id[2]}`}><img src={this.edit}></img></Link>
+                            <Link to="/"><img src={this.back} alt='Go back to the main page'></img></Link>
+                            <Link to={`/FehEdit/${this.id[2]}`}><img src={this.edit} alt='Edit this hero'></img></Link>
                         </div>
                         <button onClick={this.deleteHeroes}>Delete</button>
                     </div>
@@ -159,8 +110,8 @@ class FehSingle extends React.Component{
                                     <h3>{this.state.theHero.name}</h3>
                                 </div>
                                 <div className='myth-legend-status'>
-                                    <img src={this.state.theHero.isLegend ? this.legendT : this.legendF}></img>
-                                    <img src={this.state.theHero.isMythic ? this.mythT : this.mythF}></img>
+                                    <img src={this.state.theHero.isLegend ? this.legendT : this.legendF} alt={this.state.theHero.isLegend ? "the hero is a legend" : "the hero is not a legend"}></img>
+                                    <img src={this.state.theHero.isMythic ? this.mythT : this.mythF} alt={this.state.theHero.isMythic ? "the hero is a myth" : "the hero is not a myth"}></img>
                                 </div>
                             </article>
                             <article className='hero-stats'>
@@ -194,7 +145,7 @@ class FehSingle extends React.Component{
                                         <p>UltAtk Cooldown :</p>
                                     </div>
                                     <div>
-                                        <img src={require(`../assets/img/special-icon.png`).default}></img>
+                                        <img src={require(`../assets/img/special-icon.png`).default} alt="ultAtk icon"></img>
                                         {Math.ceil(1/this.state.theHero.ultAtk)}
                                     </div>
                                 </div>
@@ -215,7 +166,7 @@ class FehSingle extends React.Component{
 
                         </section>
                     },
-                    <img className='heroImg' src={this.state.heroIsKnown ? require(`../assets/img/heroes/${this.state.heroId + ".png"}`).default : require(`../assets/img/heroes/unknown.png`).default }></img>
+                    <img className='heroImg' src={this.state.heroIsKnown ? require(`../assets/img/heroes/${this.state.heroId + ".png"}`).default : require(`../assets/img/heroes/unknown.png`).default } alt={this.state.heroIsKnown ? `${this.state.theHero.name}'s full art` : "default image"}></img>
 
                 </div>
             )

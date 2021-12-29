@@ -4,39 +4,7 @@ import React from 'react';
 
 import axios from "axios";
 import qs from 'qs';
-import FehSingle from './FehSingle';
 import { Link } from 'react-router-dom';
-
-// const FehEdit = () => {
-//     const {id} = useParams();
-
-        
-    
-
-//     return (
-//         <div>{
-//             <form>
-//                 <input type="text" name="name" id=""></input>
-//                 <input type="text" name="title" id=""></input>
-//                 <div>
-//                     <ul>
-//                         <li>
-//                             <input type="number" name="hp" id=""></input>
-//                             <input type="number" name="atk" id=""></input>
-//                             <input type="number" name="spd" id=""></input>
-//                             <input type="number" name="def" id=""></input>
-//                             <input type="number" name="res" id=""></input>
-//                         </li>
-//                     </ul>
-//                 </div>
-//                 <input type="checkbox" name="isLegend" id=""></input>
-//                 <input type="checkbox" name="isMythic" id=""></input>
-//                 <button type="submit" onClick={editTheHero()}>Edit hero</button>
-//             </form>
-//             }
-//         </div>
-//     );
-// }
 
 class FehEdit extends React.Component {
     constructor(props) {
@@ -50,7 +18,7 @@ class FehEdit extends React.Component {
 
         this.heroesArray = [];
         this.id = window.location.pathname.split('/')[2];
-        // console.log(this.id[2]);
+        
         this.isModified = false;
         this.state = {
             name: '',
@@ -63,6 +31,7 @@ class FehEdit extends React.Component {
                 def: 0,
                 res: 0,
             },
+            heroId: 0,
             isLegend: false,
             isMythic: false,
             heroIsKnown: false
@@ -72,12 +41,10 @@ class FehEdit extends React.Component {
     }
 
     componentDidMount() {
-        // axios.get( `/show-heroes/${this.id[2]}`)
         fetch( `/show-heroes/${this.id}`)
             .then(res => res.json())
             .then(
                 (result) => {
-                    // console.log(result);
                     this.setState( {
                         name: result.name,
                         title: result.title,
@@ -89,10 +56,10 @@ class FehEdit extends React.Component {
                             def: result.stats.def,
                             res: result.stats.res,
                         },
+                        heroId: result._id,
                         isLegend: result.isLegend,
                         isMythic: result.isMythic,
                     });
-                    // console.log(this.state);
 
                     document.getElementById("ultAtk").value = this.state.ultAtk;
                     document.getElementById("isLegend").checked = this.state.isLegend;
@@ -104,12 +71,10 @@ class FehEdit extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     result.forEach(element => {
                         this.heroesArray.push(element._id)
                     });
                     this.isTheHeroKnown(this.heroesArray)
-                    console.log(this.heroesArray);
                 },
             )
     }
@@ -200,7 +165,6 @@ class FehEdit extends React.Component {
             default:
                 break;
         }
-        // console.log(this.state);
     }
 
     handleSubmit(event){
@@ -221,7 +185,9 @@ class FehEdit extends React.Component {
                 isLegend: this.state.isLegend,
                 isMythic: this.state.isMythic 
             })
-        })
+        }).then(
+            window.location.href = `/FehSingle/${this.state.heroId}`
+        );
         
         this.isModified = true;
         event.preventDefault();
@@ -231,8 +197,11 @@ class FehEdit extends React.Component {
     isTheHeroKnown(id) {
         let i = 0;
         id.forEach(element => {
-            if (this.state.heroId == element) {
-                this.setState.heroIsKnown = true;
+            i++;
+            if (this.state.heroId == element && i<=8) {
+                this.setState({
+                    heroIsKnown: true
+                });
             }
         });
     }

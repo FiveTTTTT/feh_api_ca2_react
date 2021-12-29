@@ -65,9 +65,9 @@
   width: 80%;
 
   background-color: hsl(41, 34%, 78%);
-  border-radius: 20% 10px;
+  border-radius: 20%;
   
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   border-top-width: 5px;
   border-top-color: hsl(41, 34%, 98%);
   border-bottom-width: 5px;

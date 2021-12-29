@@ -9,12 +9,18 @@ import { Link } from 'react-router-dom';
 
 class FehAdd extends React.Component {
     constructor(props) {
-        super(props);
+        super(props);        
+        this.back = require("../assets/img/back-button.png").default;
+        this.edit = require("../assets/img/edit-button.png").default;
+        this.legendF = require("../assets/img/legend-false.png").default;
+        this.mythF = require("../assets/img/myth-false.png").default;
+        this.legendT = require("../assets/img/legend-true.png").default;
+        this.mythT = require("../assets/img/myth-true.png").default;
         // let id = window.location.href.split('=')[1]
         this.state = {
             name: '',
             title: '',            
-            ultAtk: 0,
+            ultAtk: 0.2,
             stats: {
                 hp: 0,
                 atk: 0,
@@ -118,15 +124,15 @@ class FehAdd extends React.Component {
         
     }
     verifSubmit() {
-        if(this.state.title == "" || 
-        this.state.title == " " || 
-        this.state.name == "" || 
-        this.state.name == " " ||
-        this.state.stats.hp == 0 ||
-        this.state.stats.atk == 0 ||
-        this.state.stats.def == 0 ||
-        this.state.stats.res == 0 ||
-        this.state.stats.spd == 0) {
+        if(this.state.title === "" || 
+        this.state.title === " " || 
+        this.state.name === "" || 
+        this.state.name === " " ||
+        this.state.stats.hp === 0 ||
+        this.state.stats.atk === 0 ||
+        this.state.stats.def === 0 ||
+        this.state.stats.res === 0 ||
+        this.state.stats.spd === 0) {
             return false
 
         } else {
@@ -165,110 +171,99 @@ class FehAdd extends React.Component {
 
 
     render() {
+        let editButton;
+        if (this.isModified) {
+            editButton = 
+            <div className='edit-button edit-button-enable'>
+                <button type="submit">Edit hero</button>
+            </div>
+            
+        } else {
+            editButton = 
+            <div className='edit-button edit-button-disable'>
+                <button type="submit" disabled>Edit hero</button>
+            </div>
+        }
         return ( 
-            <div id='hero-info'>
-            <Link to="/"><div>arrow</div></Link>
-            {/* <Link to={`/FehSingle/${this.id}`}><div>cancel</div></Link> */}
-            {
-                <form onSubmit={this.handleSubmit}>
-                    <section>
-                    <article className='hero-head'>
-                        <div>
-                            <input type="text" name="name" id="" value={this.state.name} placeholder='name' onChange={this.handleChange}></input>
-                            <input type="text" name="title" id="" value={this.state.title} placeholder='title' onChange={this.handleChange}></input>
-                        </div>
-                        <div>
-                            <label>isLegend</label>
-                            <input type="checkbox" name="isLegend" defaultChecked={this.state.isLegend} id="isLegend" placeholder='isLegend' onChange={this.handleChange}></input>
-                            <label>isMythic</label>
-                            <input type="checkbox" name="isMythic" defaultChecked={this.state.isMythic} id="isMythic" placeholder='isMythic' onChange={this.handleChange}></input>
-                        
-                        </div>
-                    </article>
-                    <article className='hero-stats'>
-                        <div className='list-stat'>
-                            <ul>
-                                <li>
-                                    <div>hp :</div> 
-                                    <input type="number" name="hp"  value={this.state.stats.hp} id="" placeholder='hp' onChange={this.handleChange}></input>
-                                </li>
-                                <li>
-                                    <div>atk :</div> 
-                                    <input type="number" name="atk" value={this.state.stats.atk}  id="" placeholder='atk' onChange={this.handleChange}></input>
-                                </li>
-                                <li>
-                                    <div>spd :</div> 
-                                    <input type="number" name="spd" value={this.state.stats.spd}  id="" placeholder='spd' onChange={this.handleChange}></input>
-                                </li>
-                                <li>
-                                    <div>def :</div> 
-                                    <input type="number" name="def" value={this.state.stats.def}  id="" placeholder='def' onChange={this.handleChange}></input>
-                                </li>
-                                <li>
-                                    <div>res :</div> 
-                                    <input type="number" name="res" value={this.state.stats.res}  id="" placeholder='res' onChange={this.handleChange}></input>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className='the-ultatk'>
-                            <label>{Math.ceil(1/this.state.ultAtk)}</label>
-                            <input type="range" id="ultAtk" name="ultAtk" min="0.2" max="0.5" step="0.1" onChange={this.handleChange}></input>
-                        </div>
-                    </article>
+            <div id='hero-info' className='edit-hero'>
+                <div className='nav-buttons'>
                     <div>
-                            <button type="submit" >Edit hero</button>
-                        </div>
+                        <Link to={`/`}><img src={this.back}></img></Link>
+                    </div>
+                </div>
+                {
+                    <form onSubmit={this.handleSubmit}>
+                        <section>
+                        <article className='hero-head'>
+                            <div className='name-title'>
+                                <h3>
+                                    <input type="text" name="title" maxLength={16} id="" value={this.state.title} placeholder='title' onChange={this.handleChange}></input>
+                                </h3>
+                                <h3>
+                                    <input type="text" maxLength={12} name="name" id="" value={this.state.name} placeholder='name' onChange={this.handleChange}></input>
+                                </h3>
+                            </div>
+                            <div className='myth-legend-status'>
+                                <label>
+                                    <img src={this.state.isLegend ? this.legendT : this.legendF} alt={this.state.isLegend ? "the hero is a legend" : "the hero is not a legend"}></img>
+                                    <input type="checkbox" name="isLegend" defaultChecked={this.state.isLegend} id="isLegend" placeholder='isLegend' onChange={this.handleChange}></input>
+                                </label>
+                                <label>
+                                    <img src={this.state.isMythic ? this.mythT : this.mythF} alt={this.state.isMythic ? "the hero is a myth" : "the hero is not a myth"}></img>
+                                    <input type="checkbox" name="isMythic" defaultChecked={this.state.isMythic} id="isMythic" placeholder='isMythic' onChange={this.handleChange}></input>
+                                </label>
+                            
+                            </div>
+                        </article>
+                        <article className='hero-stats'>
+                            <div className='list-stat'>
+                                <ul>
+                                    <li>
+                                        <div>hp :</div> 
+                                        <input type="number" min={0} max={99} name="hp"  value={this.state.stats.hp} id="" placeholder='hp' onChange={this.handleChange}></input>
+                                    </li>
+                                    <li>
+                                        <div>atk :</div> 
+                                        <input type="number" min={0} max={99} name="atk" value={this.state.stats.atk}  id="" placeholder='atk' onChange={this.handleChange}></input>
+                                    </li>
+                                    <li>
+                                        <div>spd :</div> 
+                                        <input type="number" min={0} max={99} name="spd" value={this.state.stats.spd}  id="" placeholder='spd' onChange={this.handleChange}></input>
+                                    </li>
+                                    <li>
+                                        <div>def :</div> 
+                                        <input type="number" min={0} max={99} name="def" value={this.state.stats.def}  id="" placeholder='def' onChange={this.handleChange}></input>
+                                    </li>
+                                    <li>
+                                        <div>res :</div> 
+                                        <input type="number" min={0} max={99} name="res" value={this.state.stats.res}  id="" placeholder='res' onChange={this.handleChange}></input>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className='the-ultatk'>
+                                <label>
+                                    <div>
+                                        <p>UltAtk Cooldown :</p>
+                                    </div>
+                                    <div>
+                                        <img src={require(`../assets/img/special-icon.png`).default} alt="ultAtk icon"></img>
+                                        {Math.ceil(1/this.state.ultAtk)}
+                                    </div>
+                                </label>
+                                <input type="range" id="ultAtk" name="ultAtk" min="0.2" max="0.5" step="0.1" onChange={this.handleChange}></input>
+                            </div>
+                        </article>    
+                        {editButton}
+                            
                         </section>
                     </form>
                 }
+                <img className='heroImg' src={require(`../assets/img/heroes/unknown.png`).default } alt={"default image"}></img>
+
             </div>
-            // A HTML form 
         )
         
     }
 }
 
-
-
 export default FehAdd;
-
-
-
-
-
-// import { json } from "body-parser";
-
-// // component to edit a feh entry
-// const FehAdd = ()  => {
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         const hero = {
-//             name: "ash",
-//             title: "Askr's vassal",
-//             ultAtk: 0.3,
-//             stats: {
-//                 hp: 42,
-//                 atk: 57,
-//                 spd: 27,
-//                 def: 42,
-//                 res: 34,
-//             },
-//             isLegend: false,
-//             isMythic: true, 
-//          };
-         
-//          fetch("/post-heroes", {
-//              method: 'POST',
-//              headers: { 'Content-Type': 'application/json' },
-//              body: JSON.stringify(hero)
-//          }).then(() => {
-//              console.log("new hero added");
-//          })
-//     }
-
-//     return (
-//         <div onClick={handleSubmit}> hello world</div>
-//     )
-// }
-
-// export default FehAdd;
