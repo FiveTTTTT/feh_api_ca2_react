@@ -1,10 +1,7 @@
 //component to edit a feh entry
 
 import React from 'react';
-// import axios from "axios";
 import { Link } from 'react-router-dom';
-// import FehSingle from './FehSingle';
-// import FehDelete from './FehDelete';
 
 
 class FeHeroes extends React.Component {
@@ -59,8 +56,6 @@ class FeHeroes extends React.Component {
                             <li key={0}>
                                 <button className='hero-icon new-hero-button'>
                                     <Link to={`/FehAdd`}><div>Create a new Hero</div></Link>
-                                    
-                                    {/* {item.name} */}
                                 </button>
                             </li>
                             {
@@ -68,25 +63,15 @@ class FeHeroes extends React.Component {
                                     this.nbOfHero++,
                                     
                                     <li key={item._id+1}>
-                                        
-                                        {/* <Link to="/FehSingle/+{{ item._id }}">{item.title}</Link> */}
                                         <Link to={`/FehSingle/${item._id}`}>
                                             <div className='hero-icon'>
                                                 <div></div>
                                                 <img src={this.nbOfHero <= 8 ? this.iconSrcs(item._id) : this.iconSrcs("unknown")}></img>
-                                                {/* {item.name} */}
+                                                
                                             </div>
                                         </Link>  
-                                        {/* <FehDelete id={`${item._id}`}>x</FehDelete> */}
-                                        {/* <Link to={`/FehDelete/${item._id}`}>delete</Link> | 
-                                        <Link to={`/FehEdit/${item._id}`}>edit</Link> */}
                                     </li>
                                 ))
-                                
-                                
-
-
-                                
                             }
                         </ul>
                     </div>

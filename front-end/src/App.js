@@ -1,6 +1,5 @@
 import './App.css';
 import Navigation from "./Navigation";
-// import {  } from 'react-router';
 import { Route, Routes } from 'react-router-dom';
 import FehAdd from "./components/FehAdd";
 import FehEdit from "./components/FehEdit";
@@ -11,7 +10,6 @@ import FehDelete from './components/FehDelete';
 function App() {
   return (
     <div>
-      {/* <Navigation name="nav" /> */}
       <Routes>
         <Route exact path="/" element={<FeHeroes />} />
         <Route path="/navigation" element={<Navigation />} />

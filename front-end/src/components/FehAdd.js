@@ -4,8 +4,6 @@ import React from 'react';
 import axios from "axios";
 import qs from 'qs';
 import { Link } from 'react-router-dom';
-// import { Route, Routes, Link  } from 'react-router-dom';
-
 
 class FehAdd extends React.Component {
     constructor(props) {
@@ -16,7 +14,6 @@ class FehAdd extends React.Component {
         this.mythF = require("../assets/img/myth-false.png").default;
         this.legendT = require("../assets/img/legend-true.png").default;
         this.mythT = require("../assets/img/myth-true.png").default;
-        // let id = window.location.href.split('=')[1]
         this.state = {
             name: '',
             title: '',            
@@ -34,14 +31,6 @@ class FehAdd extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.verifSubmit = this.verifSubmit.bind(this);
-    }
-
-    componentDidMount(){        
-            // axios({
-            //     method:"DELETE",
-            //     url: "/delete-heroes/61bbdf564158e08d260bde64"
-            // })
-               
     }
 
     handleChange(event) {

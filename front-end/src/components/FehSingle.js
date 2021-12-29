@@ -151,19 +151,6 @@ class FehSingle extends React.Component{
                                 </div>
 
                             </article>
-                            {/* <div>
-                                <label>isLegend</label>
-                                <input type="checkbox" name="isLegend" defaultChecked={this.state.theHero.isLegend} id="isLegend" placeholder='isLegend'></input>
-                                                        
-                            </div>
-                            <div>
-                                <label>isMythic</label>
-                                <input type="checkbox" name="isMythic" defaultChecked={this.state.theHero.isMythic} id="isMythic" placeholder='isMythic'></input>
-                        
-                            </div> */}
-                            
-
-
                         </section>
                     },
                     <img className='heroImg' src={this.state.heroIsKnown ? require(`../assets/img/heroes/${this.state.heroId + ".png"}`).default : require(`../assets/img/heroes/unknown.png`).default } alt={this.state.heroIsKnown ? `${this.state.theHero.name}'s full art` : "default image"}></img>

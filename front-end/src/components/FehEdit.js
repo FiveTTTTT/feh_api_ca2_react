@@ -226,9 +226,7 @@ class FehEdit extends React.Component {
                 <div className='nav-buttons'>
                     <div>
                         <Link to={`/FehSingle/${this.id}`}><img src={this.back}></img></Link>
-                        {/* <Link to={`/FehEdit/${this.id[2]}`}><img src={this.edit}></img></Link> */}
                     </div>
-                    {/* <button>Delete</button> */}
                 </div>
                 {
                     <form onSubmit={this.handleSubmit}>
