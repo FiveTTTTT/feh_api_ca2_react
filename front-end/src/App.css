@@ -66,7 +66,7 @@
 
   background-color: hsl(41, 34%, 78%);
   border-radius: 20%;
-  
+
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-top-width: 5px;
   border-top-color: hsl(41, 34%, 98%);
@@ -102,6 +102,10 @@
   color: antiquewhite;
 }
 
+#heroes-list ul li.not-searched {
+  display: none;
+}
+
 #heroes-list ul li a {
   text-decoration: none;
 
@@ -118,6 +122,7 @@
   align-items: center;
   position: relative;
 }
+
 #heroes-list ul li .hero-icon.new-hero-button {
   background-color: transparent;
 }
@@ -135,7 +140,7 @@
 #heroes-list ul li .hero-icon.new-hero-button a {
   width: 100%;
   height: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -405,4 +410,10 @@
   /* background-color: yellowgreen; */
   background-size: contain;
   border: none;
+}
+
+#heroes-list #search-heroes-list input{
+  background-color: hsl(201, 66%, 16%);
+  color: #fff;
+
 }

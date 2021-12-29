@@ -17,7 +17,7 @@ class FehAdd extends React.Component {
         this.state = {
             name: '',
             title: '',            
-            ultAtk: 0.2,
+            ultAtk: 0.2, 
             stats: {
                 hp: 0,
                 atk: 0,

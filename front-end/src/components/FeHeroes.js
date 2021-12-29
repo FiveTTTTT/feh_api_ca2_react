@@ -11,7 +11,13 @@ class FeHeroes extends React.Component {
         this.state = {
             isLoaded: false,
             feHeroes: [],
+            searchedHero: {
+                searching: false,
+                name: ""
+            }
         }
+        
+        this.handleChange = this.handleChange.bind(this);
     }
     
 
@@ -28,9 +34,27 @@ class FeHeroes extends React.Component {
             )
     }
 
+    handleChange(event) {
+        if (event.target.value != "") {
+            this.setState({
+                searchedHero:{
+                    searching: true,
+                    name: event.target.value
+                }
+            });            
+        }
+        else {
+            this.setState({
+                searchedHero:{
+                    searching: false,
+                    name: event.target.value
+                }
+            }); 
+        }
+    }
+
     iconSrcs(id){
         let properId = id + ".png";
-
         let heroIcon = require(`../assets/img/heroes-icons/${properId}`).default;
         return heroIcon;
 
@@ -49,9 +73,19 @@ class FeHeroes extends React.Component {
         } else {
 
             return(
-                <div id='heroes-list'>
+
+                <section id='heroes-list'>
                     <h1>Heroes</h1>
-                    <div className='theList'>
+                    <article id='search-heroes-list'>
+                        <input type="text" value={this.state.searchedHero.name} placeholder='Enter a name' onChange={this.handleChange}></input>
+                        <div className='research-list'>
+
+
+                        </div>
+
+
+                    </article>
+                    <article className='theList'>
                         <ul>
                             <li key={0}>
                                 <button className='hero-icon new-hero-button'>
@@ -59,10 +93,11 @@ class FeHeroes extends React.Component {
                                 </button>
                             </li>
                             {
+                                this.nbOfHero = 0, 
                                 this.state.feHeroes.map(item =>(
                                     this.nbOfHero++,
                                     
-                                    <li key={item._id+1}>
+                                    <li key={item._id+1} className={this.state.searchedHero.searching && this.state.searchedHero.name != item.name ? "not-searched" : ""}>
                                         <Link to={`/FehSingle/${item._id}`}>
                                             <div className='hero-icon'>
                                                 <div></div>
@@ -74,8 +109,8 @@ class FeHeroes extends React.Component {
                                 ))
                             }
                         </ul>
-                    </div>
-                </div>
+                    </article>
+                </section>
             )
         }
     }
