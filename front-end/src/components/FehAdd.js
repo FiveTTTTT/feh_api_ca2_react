@@ -14,6 +14,7 @@ class FehAdd extends React.Component {
         this.mythF = require("../assets/img/myth-false.png").default;
         this.legendT = require("../assets/img/legend-true.png").default;
         this.mythT = require("../assets/img/myth-true.png").default;
+        this.isModified = false;
         this.state = {
             name: '',
             title: '',            
@@ -110,6 +111,20 @@ class FehAdd extends React.Component {
             default:
                 break;
         }
+        if(this.state.title === "" || 
+        this.state.title === " " || 
+        this.state.name === "" || 
+        this.state.name === " " ||
+        this.state.stats.hp === 0 ||
+        this.state.stats.atk === 0 ||
+        this.state.stats.def === 0 ||
+        this.state.stats.res === 0 ||
+        this.state.stats.spd === 0) {
+            this.isModified = false;
+
+        } else {
+            this.isModified = true;
+        }
         
     }
     verifSubmit() {
@@ -150,7 +165,9 @@ class FehAdd extends React.Component {
                         isLegend: this.state.isLegend,
                         isMythic: this.state.isMythic 
                })
-           })
+           }).then(
+                window.location.href = `/`
+            );
        } else {
            alert("the hero is incomplete!")
        }
@@ -160,17 +177,17 @@ class FehAdd extends React.Component {
 
 
     render() {
-        let editButton;
+        let addButton;
         if (this.isModified) {
-            editButton = 
+            addButton = 
             <div className='edit-button edit-button-enable'>
-                <button type="submit">Edit hero</button>
+                <button type="submit">Add hero</button>
             </div>
             
         } else {
-            editButton = 
+            addButton = 
             <div className='edit-button edit-button-disable'>
-                <button type="submit" disabled>Edit hero</button>
+                <button type="submit" disabled>Add hero</button>
             </div>
         }
         return ( 
@@ -242,7 +259,7 @@ class FehAdd extends React.Component {
                                 <input type="range" id="ultAtk" name="ultAtk" min="0.2" max="0.5" step="0.1" onChange={this.handleChange}></input>
                             </div>
                         </article>    
-                        {editButton}
+                        {addButton}
                             
                         </section>
                     </form>

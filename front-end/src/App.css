@@ -412,8 +412,49 @@
   border: none;
 }
 
-#heroes-list #search-heroes-list input{
+#heroes-list #search-heroes-list input {
   background-color: hsl(201, 66%, 16%);
   color: #fff;
+
+}
+
+div div.react-confirm-alert-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+div div.react-confirm-alert-overlay .react-confirm-alert .react-confirm-alert-body {
+  background: rgb(97, 135, 144);
+  width: 100%;
+  background: linear-gradient(90deg, rgba(97, 135, 144, 1) 0%, rgba(136, 120, 104, 1) 25%, rgba(127, 123, 113, 1) 75%, rgba(97, 135, 144, 1) 100%);
+  text-align: center;
+  border-radius: 9%;
+  box-shadow: inset 0px 0px 0px 2px #678d96;
+  box-sizing: border-box;
+
+}
+
+div div.react-confirm-alert-overlay .react-confirm-alert .react-confirm-alert-body .react-confirm-alert-button-group {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+}
+
+div div.react-confirm-alert-overlay .react-confirm-alert .react-confirm-alert-body .react-confirm-alert-button-group button:first-child {
+  background: no-repeat url("./assets/img/confirm-button.png");
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+div div.react-confirm-alert-overlay .react-confirm-alert .react-confirm-alert-body .react-confirm-alert-button-group button:last-child {
+  background: no-repeat url("./assets/img/cancel-button.png");
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 40px;
+
 
 }

@@ -57,8 +57,8 @@ class FehSingle extends React.Component{
 
     deleteHeroes= () => {
         confirmAlert({
-          title: 'Confirm to submit',
-          message: 'Are you sure to do this.',
+          title: 'Confirm to delete',
+          message: 'Are you sure to delete this hero?',
           buttons: [
             {
               label: 'Yes',
@@ -66,7 +66,6 @@ class FehSingle extends React.Component{
             },
             {
               label: 'No',
-              onClick: () => alert('Click No')
             }
           ]
         });
