@@ -3,155 +3,161 @@
 import React from 'react';
 import axios from "axios";
 import qs from 'qs';
-import { Link } from 'react-router-dom';
+import {
+    Link
+} from 'react-router-dom';
 
 class FehAdd extends React.Component {
-    constructor(props) {
-        super(props);        
-        this.back = require("../assets/img/back-button.png").default;
-        this.edit = require("../assets/img/edit-button.png").default;
-        this.legendF = require("../assets/img/legend-false.png").default;
-        this.mythF = require("../assets/img/myth-false.png").default;
-        this.legendT = require("../assets/img/legend-true.png").default;
-        this.mythT = require("../assets/img/myth-true.png").default;
-        this.isModified = false;
-        this.state = {
-            name: '',
-            title: '',            
-            ultAtk: 0.2, 
-            stats: {
-                hp: 0,
-                atk: 0,
-                spd: 0,
-                def: 0,
-                res: 0,
-            },
-            isLegend: false,
-            isMythic: false,
-        };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.verifSubmit = this.verifSubmit.bind(this);
-    }
-
-    handleChange(event) {
-
-        switch (event.target.name) {
-            case "name":                
-                this.setState({name: event.target.value});
-                
-                break;
-            case "title":
-                this.setState({title: event.target.value});
-                
-                break;
-            case "ultAtk":
-                this.setState({ultAtk: event.target.value});
-                
-                break;
-            case "hp":
-                this.setState({stats:{
-                    hp: event.target.value,
-                    atk: this.state.stats.atk,
-                    spd: this.state.stats.spd,
-                    def: this.state.stats.def,
-                    res: this.state.stats.res,
-                } });
-                
-                break;
-            case "atk":
-                this.setState({stats:{
-                    hp: this.state.stats.hp,
-                    atk: event.target.value,
-                    spd: this.state.stats.spd,
-                    def: this.state.stats.def,
-                    res: this.state.stats.res,
-                } });
-                
-                break;
-            case "spd":
-                this.setState({stats:{
-                    hp: this.state.stats.hp,                    
-                    atk: this.state.stats.atk,
-                    spd: event.target.value,
-                    def: this.state.stats.def,
-                    res: this.state.stats.res,
-                } });
-                
-                break;
-            case "def":
-                this.setState({stats:{
-                    hp: this.state.stats.hp,
-                    atk: this.state.stats.atk,
-                    spd: this.state.stats.spd, 
-                    def: event.target.value,
-                    res: this.state.stats.res,
-                } });
-                
-                break;
-            case "res":
-                this.setState({stats:{
-                    hp: this.state.stats.hp,
-                    atk: this.state.stats.atk,
-                    spd: this.state.stats.spd,                    
-                    def: this.state.stats.def,
-                    res: event.target.value,
-                } });
-                
-                break;
-            case "isLegend":
-                this.setState({isLegend: !this.state.isLegend});
-                
-                break;
-            case "isMythic":
-                this.setState({isMythic: !this.state.isMythic});
-                
-                break;
-        
-            default:
-                break;
+        constructor(props) {
+            super(props);
+            this.back = require("../assets/img/back-button.png").default;
+            this.edit = require("../assets/img/edit-button.png").default;
+            this.legendF = require("../assets/img/legend-false.png").default;
+            this.mythF = require("../assets/img/myth-false.png").default;
+            this.legendT = require("../assets/img/legend-true.png").default;
+            this.mythT = require("../assets/img/myth-true.png").default;
+            // this.state.isModified = false;
+            this.state = {
+                name: '',
+                title: '',
+                ultAtk: 0.2,
+                stats: {
+                    hp: 0,
+                    atk: 0,
+                    spd: 0,
+                    def: 0,
+                    res: 0,
+                },
+                isLegend: false,
+                isMythic: false,
+                isModified: false,
+            };
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+            // this.verifSubmit = this.verifSubmit.bind(this);
         }
-        if(this.state.title === "" || 
-        this.state.title === " " || 
-        this.state.name === "" || 
-        this.state.name === " " ||
-        this.state.stats.hp === 0 ||
-        this.state.stats.atk === 0 ||
-        this.state.stats.def === 0 ||
-        this.state.stats.res === 0 ||
-        this.state.stats.spd === 0) {
-            this.isModified = false;
 
-        } else {
-            this.isModified = true;
+        handleChange(event) {
+
+            switch (event.target.name) {
+                case "name":
+                    this.setState({
+                        name: event.target.value
+                    });
+
+                    break;
+                case "title":
+                    this.setState({
+                        title: event.target.value
+                    });
+
+                    break;
+                case "ultAtk":
+                    this.setState({
+                        ultAtk: event.target.value
+                    });
+
+                    break;
+                case "hp":
+                    this.setState({
+                        stats: {
+                            hp: event.target.value,
+                            atk: this.state.stats.atk,
+                            spd: this.state.stats.spd,
+                            def: this.state.stats.def,
+                            res: this.state.stats.res,
+                        }
+                    });
+
+                    break;
+                case "atk":
+                    this.setState({
+                        stats: {
+                            hp: this.state.stats.hp,
+                            atk: event.target.value,
+                            spd: this.state.stats.spd,
+                            def: this.state.stats.def,
+                            res: this.state.stats.res,
+                        }
+                    });
+
+                    break;
+                case "spd":
+                    this.setState({
+                        stats: {
+                            hp: this.state.stats.hp,
+                            atk: this.state.stats.atk,
+                            spd: event.target.value,
+                            def: this.state.stats.def,
+                            res: this.state.stats.res,
+                        }
+                    });
+
+                    break;
+                case "def":
+                    this.setState({
+                        stats: {
+                            hp: this.state.stats.hp,
+                            atk: this.state.stats.atk,
+                            spd: this.state.stats.spd,
+                            def: event.target.value,
+                            res: this.state.stats.res,
+                        }
+                    });
+
+                    break;
+                case "res":
+                    this.setState({
+                        stats: {
+                            hp: this.state.stats.hp,
+                            atk: this.state.stats.atk,
+                            spd: this.state.stats.spd,
+                            def: this.state.stats.def,
+                            res: event.target.value,
+                        }
+                    });
+
+                    break;
+                case "isLegend":
+                    this.setState({
+                        isLegend: !this.state.isLegend
+                    });
+
+                    break;
+                case "isMythic":
+                    this.setState({
+                        isMythic: !this.state.isMythic
+                    });
+
+                    break;
+
+                default:
+                    break;
+            }
+            if (this.state.title === "" ||
+                this.state.title === " " ||
+                this.state.name === "" ||
+                this.state.name === " " ||
+                this.state.stats.hp === 0 ||
+                this.state.stats.atk === 0 ||
+                this.state.stats.def === 0 ||
+                this.state.stats.res === 0 ||
+                this.state.stats.spd === 0) {
+                this.setState({isModified: false});
+            } else {
+                this.setState({isModified: true});
+            }
+
         }
-        
-    }
-    verifSubmit() {
-        if(this.state.title === "" || 
-        this.state.title === " " || 
-        this.state.name === "" || 
-        this.state.name === " " ||
-        this.state.stats.hp === 0 ||
-        this.state.stats.atk === 0 ||
-        this.state.stats.def === 0 ||
-        this.state.stats.res === 0 ||
-        this.state.stats.spd === 0) {
-            return false
 
-        } else {
-            return true
-        }
-    }
-
-    handleSubmit(event){
-       if (this.verifSubmit()) {
-           
-           axios({
-               method: "post",
-               url: '/post-heroes',
-               headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
-               data: qs.stringify({
+        handleSubmit(event) {
+                axios({
+                    method: "post",
+                    url: '/post-heroes',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: qs.stringify({
                         name: this.state.name,
                         title: this.state.title,
                         ultAtk: this.state.ultAtk,
@@ -163,38 +169,35 @@ class FehAdd extends React.Component {
                             res: this.state.stats.res,
                         }),
                         isLegend: this.state.isLegend,
-                        isMythic: this.state.isMythic 
-               })
-           }).then(
-                window.location.href = `/`
-            );
-       } else {
-           alert("the hero is incomplete!")
-       }
+                        isMythic: this.state.isMythic
+                    })
+                }).then(
+                    window.location.href = `/`
+                );
 
-        event.preventDefault()
-    }
+            event.preventDefault()
+        }
 
 
     render() {
         let addButton;
-        if (this.isModified) {
+        if (this.state.isModified) {
             addButton = 
-            <div className='edit-button edit-button-enable'>
-                <button type="submit">Add hero</button>
-            </div>
+                <div className='edit-button edit-button-enable'>
+                    <button type="submit">Add hero</button>
+                </div>
             
         } else {
             addButton = 
-            <div className='edit-button edit-button-disable'>
-                <button type="submit" disabled>Add hero</button>
-            </div>
+                <div className='edit-button edit-button-disable'>
+                    <button type="submit" disabled>Add hero</button>
+                </div>
         }
         return ( 
             <div id='hero-info' className='edit-hero'>
                 <div className='nav-buttons'>
                     <div>
-                        <Link to={`/`}><img src={this.back}></img></Link>
+                        <Link to={`/`}><img src={this.back} alt='Go back to the main page'></img></Link>
                     </div>
                 </div>
                 {
@@ -264,7 +267,7 @@ class FehAdd extends React.Component {
                         </section>
                     </form>
                 }
-                <img className='heroImg' src={require(`../assets/img/heroes/unknown.png`).default } alt={"default image"}></img>
+                <img className='heroImg' src={require(`../assets/img/heroes/unknown.png`).default } alt="default art"></img>
 
             </div>
         )

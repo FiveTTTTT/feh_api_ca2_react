@@ -1,87 +1,88 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { confirmAlert } from 'react-confirm-alert';
+import {
+    Link
+} from 'react-router-dom';
+import {
+    confirmAlert
+} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
-class FehSingle extends React.Component{
-    constructor(props) {
-        super(props);
-        this.back = require("../assets/img/back-button.png").default;
-        this.edit = require("../assets/img/edit-button.png").default;
-        this.legendF = require("../assets/img/legend-false.png").default;
-        this.mythF = require("../assets/img/myth-false.png").default;
-        this.legendT = require("../assets/img/legend-true.png").default;
-        this.mythT = require("../assets/img/myth-true.png").default;
-        this.heroesArray = [];
-        
-        this.id = window.location.pathname.split('/');
-        
-        this.state = {
-            isLoaded: false,
-            theHero: [],            
-            heroId: 0,
-            heroIsKnown: false
-        };
-    }
+class FehSingle extends React.Component {
+        constructor(props) {
+            super(props);
+            // require the used assets
+            this.back = require("../assets/img/back-button.png").default;
+            this.edit = require("../assets/img/edit-button.png").default;
+            this.legendF = require("../assets/img/legend-false.png").default;
+            this.mythF = require("../assets/img/myth-false.png").default;
+            this.legendT = require("../assets/img/legend-true.png").default;
+            this.mythT = require("../assets/img/myth-true.png").default;
+            
+            this.heroesArray = [];
 
-    componentDidMount() {
-        fetch( `/show-heroes/${this.id[2]}`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({            
-                        isLoaded: true,
-                        theHero: result,
-                        heroId: result._id
-                    });
-                },
+            this.id = window.location.pathname.split('/');
+
+            this.state = {
+                isLoaded: false,
+                theHero: [],
+                heroId: 0,
+                heroIsKnown: false
+            };
+        }
+
+        componentDidMount() {
+            fetch(`/show-heroes/${this.id[2]}`)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        this.setState({
+                            isLoaded: true,
+                            theHero: result,
+                            heroId: result._id
+                        });
+                    },
                 )
-        fetch("/show-heroes")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    result.forEach(element => {
-                        this.heroesArray.push(element._id)
+            fetch("/show-heroes")
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        result.forEach(element => {
+                            this.heroesArray.push(element._id)
+                        });
+                        this.isTheHeroKnown(this.heroesArray);
+                    },
+                )
+
+        }
+
+        deleteHeroes = () => {
+            confirmAlert({
+                title: 'Confirm to delete',
+                message: 'Are you sure to delete this hero?',
+                buttons: [{
+                        label: 'Yes',
+                        onClick: () => window.location.href = `/FehDelete/${this.id[2]}`
+                    },
+                    {
+                        label: 'No',
+                    }
+                ]
+            });
+        };
+
+        isTheHeroKnown(id) {
+            // if the hero is one of the 8 first he has his own image
+            let i = 0;
+            id.forEach(element => {
+                i++;
+                if (this.state.heroId === element && i <= 8) {
+                    this.setState({
+                        heroIsKnown: true
                     });
-                    this.isTheHeroKnown(this.heroesArray);
-                },
-            )
-                
-    }
-
-    componentDidCatch(error) {
-        this.setState({ isLoaded: true });
-        console.log(error);
-      }
-
-    deleteHeroes= () => {
-        confirmAlert({
-          title: 'Confirm to delete',
-          message: 'Are you sure to delete this hero?',
-          buttons: [
-            {
-              label: 'Yes',
-              onClick: () => window.location.href = `/FehDelete/${this.id[2]}`
-            },
-            {
-              label: 'No',
-            }
-          ]
-        });
-      };
-
-    isTheHeroKnown(id) {
-        let i = 0;
-        id.forEach(element => {
-            i++;
-            if (this.state.heroId === element && i<=8) {
-                this.setState({
-                    heroIsKnown: true
-                });
-            }
-        });
-    }
+                }
+            });
+        }
     
     render() {
         if (!this.state.isLoaded) {                
