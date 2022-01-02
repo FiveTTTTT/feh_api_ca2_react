@@ -60,6 +60,15 @@
     1px 1px 0 #000;
 }
 
+.hero-search-input {
+  border: 3px solid hsl(0, 0%, 80%);
+  border-right: 15px solid hsl(0, 0%, 80%);
+  border-left: 15px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 3px 4px 2px black;
+}
+
 #heroes-list h1 {
   text-align: center;
   width: 80%;

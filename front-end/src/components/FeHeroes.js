@@ -10,13 +10,14 @@ class FeHeroes extends React.Component {
         constructor(props) {
             super(props);
             this.nbOfHero = 0;
+
             this.state = {
                 isLoaded: false,
                 feHeroes: [],
-                searchedHero: {
-                    searching: false,
-                    name: ""
-                }
+                // searchedHero: {
+                //     searching: false,
+                //     name: ""
+                // }
             }
 
             this.handleChange = this.handleChange.bind(this);
@@ -36,22 +37,37 @@ class FeHeroes extends React.Component {
                 )
         }
 
+        // you can find heroes by typing their name in the input(case sensitive !)
         handleChange(event) {
             if (event.target.value !== "") {
+                fetch(`/show-heroes-named/${event.target.value}`)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        this.setState({
+                            feHeroes: result
+                        })
+                    },
+                ).catch(
+                    this.setState({
+                        feHeroes: []
+                    })
+                )
                 this.setState({
-                    searchedHero: {
-                        searching: true,
-                        name: event.target.value
-                    }
+                    
                 });
             } else {
                 // if the input is empty we stop the research
-                this.setState({
-                    searchedHero: {
-                        searching: false,
-                        name: event.target.value
-                    }
-                });
+                fetch("/show-heroes")
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        this.setState({
+                            isLoaded: true,
+                            feHeroes: result,
+                        });
+                    },
+                )
             }
         }
 
@@ -78,7 +94,7 @@ class FeHeroes extends React.Component {
                 <section id='heroes-list'>
                     <h1>Heroes</h1>
                     <article id='search-heroes-list'>
-                        <input type="text" value={this.state.searchedHero.name} placeholder='Enter a name' onChange={this.handleChange}></input>
+                        <input type="text"  className='hero-search-input' placeholder='Enter a name' onChange={this.handleChange}></input>
                         <div className='research-list'></div>
                     </article>
                     <article className='the-list'>
@@ -93,7 +109,7 @@ class FeHeroes extends React.Component {
                                 this.state.feHeroes.map(item =>(
                                     this.nbOfHero++,
                                     
-                                    <li key={item._id+1} className={this.state.searchedHero.searching && this.state.searchedHero.name !== item.name ? "not-searched" : ""}>
+                                    <li key={item._id+1}>
                                         <Link to={`/FehSingle/${item._id}`}>
                                             <div className='hero-icon'>
                                                 <div></div>
