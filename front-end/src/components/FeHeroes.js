@@ -14,15 +14,10 @@ class FeHeroes extends React.Component {
             this.state = {
                 isLoaded: false,
                 feHeroes: [],
-                // searchedHero: {
-                //     searching: false,
-                //     name: ""
-                // }
             }
 
             this.handleChange = this.handleChange.bind(this);
         }
-
 
         componentDidMount() {
             fetch("/show-heroes")
@@ -79,8 +74,7 @@ class FeHeroes extends React.Component {
         }
 
     render() {
-        if (!this.state.isLoaded) {
-            
+        if (!this.state.isLoaded) {            
             return ( 
                 <div>
                      Loading...

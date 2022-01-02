@@ -1,5 +1,4 @@
 import './App.css';
-import Navigation from "./Navigation";
 import { Route, Routes } from 'react-router-dom';
 import FehAdd from "./components/FehAdd";
 import FehEdit from "./components/FehEdit";
@@ -12,7 +11,6 @@ function App() {
     <div>
       <Routes>
         <Route exact path="/" element={<FeHeroes />} />
-        <Route path="/navigation" element={<Navigation />} />
         <Route path="/FehAdd" element={<FehAdd />} />
         <Route path="/FehEdit/:id" element={<FehEdit />} />
         <Route path="/FehSingle/:id" element={<FehSingle />} />
@@ -24,15 +22,3 @@ function App() {
 }
 
 export default App;
-
-// function Home() {
-//   return (
-//     <div>
-//       <h5>This is the home page</h5>
-//       <nav>
-//         <Link to="/navigation">go nav</Link>
-//       </nav>
-//     </div>
-//   )
-  
-// }
