@@ -18,6 +18,13 @@ class FehSingle extends React.Component {
             this.mythF = require("../assets/img/myth-false.png").default;
             this.legendT = require("../assets/img/legend-true.png").default;
             this.mythT = require("../assets/img/myth-true.png").default;
+
+            // in order to not delete the original hero from the database
+            this.dontDeleteThese = ["618ba6c398758b986723a2ff", "618ba6ed98758b986723a301",
+                "618baba7c92eba20d22cdd61", "6194cd277816270db58ac7b1", "6195183d1e728450afc9d2ca",
+                "619519359d61274ae7fea8ca", "619e07143518e1c1dfaeff76", "61bc8064d8bc0e574fa285a7"
+            ];
+            this.canBeDeleted = true;
             
             this.heroesArray = [];
 
@@ -29,6 +36,9 @@ class FehSingle extends React.Component {
                 heroId: 0,
                 heroIsKnown: false
             };
+
+            this.deleteHeroes = this.deleteHeroes.bind(this)
+
         }
 
         componentDidMount() {
@@ -57,18 +67,37 @@ class FehSingle extends React.Component {
         }
 
         deleteHeroes = () => {
-            confirmAlert({
-                title: 'Confirm to delete',
-                message: 'Are you sure to delete this hero?',
-                buttons: [{
-                        label: 'Yes',
-                        onClick: () => window.location.href = `/FehDelete/${this.id[2]}`
-                    },
-                    {
-                        label: 'No',
-                    }
-                ]
-            });
+            let i = 0;
+            while (i < this.dontDeleteThese.length && this.canBeDeleted) {
+                if (this.dontDeleteThese[i] === this.id[2]) {
+                    this.canBeDeleted = false;
+                }
+                i++;
+            }
+            if (this.canBeDeleted) {
+                confirmAlert({
+                    title: 'Confirm to delete',
+                    message: 'Are you sure to delete this hero?',
+                    buttons: [{
+                            label: 'Yes',
+                            onClick: () => window.location.href = `/FehDelete/${this.id[2]}`
+                        },
+                        {
+                            label: 'No',
+                        }
+                    ]
+                });
+            } else {
+                confirmAlert({
+                    title: 'Hero cannot be deleted',
+                    message: 'You are not able to delete this hero',
+                    buttons: [{
+                            label: 'Ok'
+                        }]
+                });
+                console.log(``);
+            }
+            
         };
 
         isTheHeroKnown(id) {

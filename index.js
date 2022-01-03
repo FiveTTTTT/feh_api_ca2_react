@@ -2,6 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3001;
+const dontDeleteThese = ["618ba6c398758b986723a2ff", "618ba6ed98758b986723a301",
+    "618baba7c92eba20d22cdd61", "6194cd277816270db58ac7b1", "6195183d1e728450afc9d2ca",
+    "619519359d61274ae7fea8ca", "619e07143518e1c1dfaeff76", "61bc8064d8bc0e574fa285a7"];
+var canBeDeleted = true;
 // const { FehHeroes } = require('./feh.js');
 
 
@@ -135,15 +139,27 @@ app.post('/post-heroes', (req, res) => {
 
 app.delete('/delete-heroes/:id', (req, res) => {
     console.log("let's delete");
-    FehHeroes.findByIdAndDelete(req.params.id, err => {
-        if (err) {
-            res.send("Hero was not deleted");
-            return;
+    let i = 0;
+    while (i < dontDeleteThese.length && canBeDeleted) {
+        if (dontDeleteThese[i] == req.params.id) {
+            canBeDeleted = false;
         }
-        res.send("Hero deleted");
-        console.log(`Hero with id ${req.params.id} is now deleted`);
-    });
-    console.log("hello");
+        i++;
+
+    }
+    if (canBeDeleted) {
+        FehHeroes.findByIdAndDelete(req.params.id, err => {
+            if (err) {
+                res.send("Hero was not deleted");
+                return;
+            }
+            res.send("Hero deleted");
+            console.log(`Hero with id ${req.params.id} is now deleted`);
+        });
+    } else {
+        res.send("Hero cannot be deleted");
+        console.log(`Hero cannot be deleted`);
+    }
 })
 
 app.put('/edit-heroes/:id', (req, res) => {

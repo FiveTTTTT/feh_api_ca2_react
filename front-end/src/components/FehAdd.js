@@ -206,10 +206,10 @@ class FehAdd extends React.Component {
                         <article className='hero-head'>
                             <div className='name-title'>
                                 <h3>
-                                    <input type="text" name="title" maxLength={16} id="" value={this.state.title} placeholder='title' onChange={this.handleChange}></input>
+                                    <input type="text" name="title" maxLength={16} id="" value={this.state.title} placeholder='Enter a title' onChange={this.handleChange}></input>
                                 </h3>
                                 <h3>
-                                    <input type="text" maxLength={12} name="name" id="" value={this.state.name} placeholder='name' onChange={this.handleChange}></input>
+                                    <input type="text" maxLength={12} name="name" id="" value={this.state.name} placeholder='Enter a name' onChange={this.handleChange}></input>
                                 </h3>
                             </div>
                             <div className='myth-legend-status'>
