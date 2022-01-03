@@ -38,6 +38,13 @@
   }
 } */
 
+div#hero-info,
+section#heroes-list {
+  width: 411px;
+  position: relative;
+}
+
+
 #heroes-list {
   display: flex;
   justify-content: flex-start;
@@ -243,7 +250,7 @@
   bottom: 0;
   z-index: 1;
   height: 60vh;
-  width: 100%;
+  width: 411px;
 }
 
 #hero-info section .hero-head {
