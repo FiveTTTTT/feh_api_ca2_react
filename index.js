@@ -4,7 +4,8 @@ const app = express();
 const port = 3001;
 const dontDeleteThese = ["618ba6c398758b986723a2ff", "618ba6ed98758b986723a301",
     "618baba7c92eba20d22cdd61", "6194cd277816270db58ac7b1", "6195183d1e728450afc9d2ca",
-    "619519359d61274ae7fea8ca", "619e07143518e1c1dfaeff76", "61bc8064d8bc0e574fa285a7"];
+    "619519359d61274ae7fea8ca", "619e07143518e1c1dfaeff76", "61bc8064d8bc0e574fa285a7"
+];
 var canBeDeleted = true;
 // const { FehHeroes } = require('./feh.js');
 

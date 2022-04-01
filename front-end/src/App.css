@@ -41,6 +41,7 @@
 div#hero-info,
 section#heroes-list {
   width: 411px;
+  height: 100vh;
 }
 
 
@@ -49,12 +50,10 @@ section#heroes-list {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  /* height: 105vh; */
   background: no-repeat url("../src/assets/img/heroes-bg.jpg");
   background-size: cover;
   background-position: center;
-
-
 }
 
 * {
@@ -73,6 +72,7 @@ section#heroes-list {
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 3px 4px 2px black;
+  height: 5vh;
 }
 
 #heroes-list h1 {
@@ -86,9 +86,6 @@ section#heroes-list {
   border-top-width: 5px;
   border-top-color: hsl(41, 34%, 98%);
   border-bottom-width: 5px;
-
-
-
 }
 
 #heroes-list .the-list {
@@ -96,9 +93,11 @@ section#heroes-list {
   box-shadow: inset 0px 0px 0px 2px #678d96;
   box-sizing: border-box;
   background-color: hsla(201, 66%, 16%, 0.7);
-  max-height: 80vh;
-
-
+  /* max-height: 80vh; */
+  padding: 2vh 0;
+  height: 80vh;
+  width: 100%;
+  overflow: scroll;
 }
 
 #heroes-list ul {
@@ -232,7 +231,7 @@ section#heroes-list {
 }
 
 #hero-info .nav-buttons button {
-  width: 30%;
+  width: 26%;
   height: 6vh;
   border: none;
   background: no-repeat url("../src/assets/img/delete-button.png");
@@ -276,12 +275,12 @@ section#heroes-list {
 }
 
 #hero-info section .hero-head .name-title h3:first-child {
-  top: 18%;
+  top: 20%;
 
 }
 
 #hero-info section .hero-head .name-title h3:last-child {
-  top: 50%;
+  top: 55%;
 
 }
 
@@ -325,8 +324,8 @@ section#heroes-list {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 27vh;
-
+  height: 30vh;
+  padding: 2vh 0;
 }
 
 #hero-info section .hero-stats .list-stat {
@@ -400,7 +399,7 @@ section#heroes-list {
 }
 
 .edit-button-enable button {
-  width: 42%;
+  width: 36%;
   height: 6vh;
   background: no-repeat url("./assets/img/confirm-button.png");
   /* background-color: yellowgreen; */
@@ -445,6 +444,7 @@ div div.react-confirm-alert-overlay .react-confirm-alert .react-confirm-alert-bo
   border-radius: 9%;
   box-shadow: inset 0px 0px 0px 2px #678d96;
   box-sizing: border-box;
+  color: #fff;
 
 }
 

@@ -81,8 +81,8 @@ class FehHeroes {
 //         this.name = "cat";
 //     }
 // }
-module.exports= {
+module.exports = {
     FehHeroes,
     // Cat
-    
+
 }

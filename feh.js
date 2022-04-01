@@ -74,15 +74,7 @@ class FehHeroes {
     }
 }
 
-
-// If there's more than 1 class
-// class Cat {
-//     constructor() {
-//         this.name = "cat";
-//     }
-// }
-module.exports= {
+module.exports = {
     FehHeroes,
-    // Cat
-    
+
 }
