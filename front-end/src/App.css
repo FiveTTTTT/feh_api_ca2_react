@@ -427,8 +427,22 @@ section#heroes-list {
 }
 
 #heroes-list #search-heroes-list input {
-  background-color: hsl(201, 66%, 16%);
+  background-color: hsl(201, 66%, 36%);
   color: #fff;
+
+  text-shadow: none;
+
+}
+
+#heroes-list #search-heroes-list input::placeholder {
+  color: hsl(0, 0%, 80%);
+
+  text-shadow: none;
+
+}
+
+#heroes-list #search-heroes-list input:focus {
+  background-color: hsl(201, 66%, 16%);
 
 }
 
